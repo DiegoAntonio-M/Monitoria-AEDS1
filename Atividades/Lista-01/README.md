@@ -77,6 +77,61 @@ Comanda:
 
 Total a pagar: R$26,00
 ```
+<details>
+<summary>🎯 Exercício Extra 01: Mostre Segundo Maior e Segundo Menor</summary>
+
+**Enunciado:**
+
+Crie um programa que receba do usuário o preço dos produtos. Ao final, o programa deve exibir:
+
+- O **total gasto**
+- O **valor médio**
+- O **produto mais caro**
+- O **produto mais barato**
+- O **segundo produto mais caro**
+- O **Segundo produto mais barato**
+
+
+**Exemplo de saída esperada:**
+
+```
+Total gasto: R$124.00  
+Valor médio: R$12.40  
+Produto mais caro: Produto 5 (R$22.00)  
+Produto mais barato: Produto 4 (R$5.00)  
+Segundo mais caro: Produto 10 (R$19.00)  
+Segundo mais barato: Produto 9 (R$6.50)
+```
+
+</details>
+
+<details>
+<summary>🎯 Exercício Extra 02: Lista de Compras com 10 Produtos</summary>
+
+**Enunciado:**
+
+Crie um programa que receba do usuário o preço de **10 produtos**. Ao final, o programa deve exibir:
+
+**Exemplo de saída esperada:**
+
+```
+Informe o valor do produto 1: 12.50  
+Informe o valor do produto 2: 18.00  
+Informe o valor do produto 3: 7.00  
+Informe o valor do produto 4: 5.00  
+Informe o valor do produto 5: 22.00  
+Informe o valor do produto 6: 10.00  
+Informe o valor do produto 7: 9.00  
+Informe o valor do produto 8: 15.00  
+Informe o valor do produto 9: 6.50  
+Informe o valor do produto 10: 19.00  
+```
+
+> 💡 **Dica**:
+>
+> Faça com que apenas um valor seja alterado para que isso seja possível.
+
+</details>
 
 ---
 

@@ -77,6 +77,43 @@ Comanda:
 
 Total a pagar: R$26,00
 ```
+
+---
+
+## 🟡 Nível 2:
+
+<details>
+<summary>📌 Requisitos</summary>
+
+- Condicionais;
+- Laços de Repetição (1 a 2 laços).
+
+</details>
+
+### 🧺 Exercício 2: Lista de Compras do Mês
+
+**Enunciado:**
+
+Peça ao usuário que informe o **preço de 5 produtos**. Ao final, o programa deve exibir:
+
+- O **total gasto**
+- O **valor médio**
+- O **produto mais caro** (identificado pela posição: Produto 1, Produto 2, ...)
+
+**Exemplo de saída:**
+
+```
+Informe o valor do produto 1: 12.50  
+Informe o valor do produto 2: 8.00  
+Informe o valor do produto 3: 20.00  
+Informe o valor do produto 4: 15.00  
+Informe o valor do produto 5: 5.00  
+
+Total gasto: R$60.50  
+Valor médio: R$12.10  
+Produto mais caro: Produto 3 (R$20.00)
+```
+
 <details>
 <summary>🎯 Exercício Extra 01: Mostre Segundo Maior e Segundo Menor</summary>
 
@@ -132,42 +169,6 @@ Informe o valor do produto 10: 19.00
 > Faça com que apenas um valor seja alterado para que isso seja possível.
 
 </details>
-
----
-
-## 🟡 Nível 2:
-
-<details>
-<summary>📌 Requisitos</summary>
-
-- Condicionais;
-- Laços de Repetição (1 a 2 laços).
-
-</details>
-
-### 🧺 Exercício 2: Lista de Compras do Mês
-
-**Enunciado:**
-
-Peça ao usuário que informe o **preço de 5 produtos**. Ao final, o programa deve exibir:
-
-- O **total gasto**
-- O **valor médio**
-- O **produto mais caro** (identificado pela posição: Produto 1, Produto 2, ...)
-
-**Exemplo de saída:**
-
-```
-Informe o valor do produto 1: 12.50  
-Informe o valor do produto 2: 8.00  
-Informe o valor do produto 3: 20.00  
-Informe o valor do produto 4: 15.00  
-Informe o valor do produto 5: 5.00  
-
-Total gasto: R$60.50  
-Valor médio: R$12.10  
-Produto mais caro: Produto 3 (R$20.00)
-```
 
 ---
 

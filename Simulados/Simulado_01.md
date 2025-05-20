@@ -12,7 +12,7 @@
 
 **Enunciado:**
 
-Desenvolva um programa em C que receba um número inteiro na base decimal (`n_10`) e o converta para uma base à escolha do usuário (entre 2 e 16).
+Desenvolva um programa em C que receba um número inteiro na base decimal ou em binário e o converta para uma base à escolha do usuário.
 
 * Permita também que o usuário digite um número em binário e converta para decimal.
 
@@ -93,7 +93,7 @@ $$
 
 Inicialmente, ele permitia que qualquer número real fosse digitado, mas percebeu que certos valores geravam erros matemáticos, como radicais negativos ou divisão por zero. Por isso, João entendeu que precisava restringir os valores de `x` ao **domínio da função**.
 
-Escreva uma **C** para que:
+Escreva um programa para que:
 
 * Receba um número real `x` como parâmetro;
 * Verifique se `x` pertence ao domínio da função;

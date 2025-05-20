@@ -12,9 +12,10 @@
 
 **Enunciado:**
 
-Desenvolva um programa em C que receba um número inteiro na base decimal ou em binário e o converta para uma base à escolha do usuário.
+Desenvolva um programa em C que receba um número inteiro na base decimal($n_{10}$) ou em binário($n_{2}$) e o converta para uma base à escolha do usuário.
 
-* Permita também que o usuário digite um número em binário e converta para decimal.
+* Permita que o usuário digite um número em binário e converta para decimal.
+* Permita também que o usuário digite um número em decimal e converta para binário.
 
 **1. Exemplo de Terminal:**
 

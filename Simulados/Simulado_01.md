@@ -248,7 +248,6 @@ E classifique cada item conforme a tabela abaixo:
 | 37.5 – 38.9 | Febril      | 3         |
 | ≥ 39.0      | Febre Alta  | 5         |
 
----
 
 ### Tabela 2 - Frequência Cardíaca (bpm)
 
@@ -258,7 +257,6 @@ E classifique cada item conforme a tabela abaixo:
 | 60 – 100  | Normal      | 0         |
 | > 100     | Taquicardia | 4         |
 
----
 
 ### Tabela 3 - Pressão Arterial Sistólica (mmHg)
 
@@ -268,7 +266,6 @@ E classifique cada item conforme a tabela abaixo:
 | 90 – 120  | Normal      | 0         |
 | > 120     | Hipertensão | 3         |
 
----
 
 ### Tabela 4 - Dor (escala 0 a 10)
 
@@ -278,7 +275,6 @@ E classifique cada item conforme a tabela abaixo:
 | 4 – 7     | Moderada  | 3         |
 | 8 – 10    | Intensa   | 5         |
 
----
 
 ### Tabela 5 - Resultado Final (Total de Pontos)
 
@@ -362,14 +358,14 @@ Você está ajudando Rafael, que deseja estudar limites bilaterais de uma funç�
 2. Calcule os valores de `f(x)` ao se aproximar de `n` pela esquerda e pela direita, com `h = 0.1`, `0.01`, `0.001`.
 3. Permita o teste de três diferentes funções:
 
-   * `fA(x) = 1 / ((x - 1)*(x + 2))`  ➔ duas assíntotas
-   * `fB(x) = 1 / (x - 3)`           ➔ uma assíntota
+   * `fA(x) = 1 / (x - 3)`           ➔ uma assíntota
+   * `fB(x) = 1 / ((x - 1)*(x + 2))`  ➔ duas assíntotas
    * `fC(x) = x^2 + 1`               ➔ sem assíntota
 
 **Exemplo de Terminal:**
 
 ```
-Escolha a função: fB
+Escolha a função: fA
 x tende a: 3
 
 x = 2.9 ➔ f(x) = -10.00

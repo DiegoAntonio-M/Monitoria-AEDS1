@@ -102,14 +102,14 @@ int main() {
   // Acesso imediato aos dados sendo O(1)
 
   /*
-  * 2.1 Inicialização completa:
-  *    Todos os elementos são explicitamente definidos.
-  *    Exemplo:
-  *        +----+----+----+
-  *    [0] |  1 |  2 |  3 |
-  *        +----+----+----+
-  *    [1] |  4 |  5 |  6 |
-  *        +----+----+----+
+   * 2.1 Inicialização completa:
+   *    Todos os elementos são explicitamente definidos.
+   *    Exemplo:
+   *        +----+----+----+
+   *    [0] |  1 |  2 |  3 |
+   *        +----+----+----+
+   *    [1] |  4 |  5 |  6 |
+   *        +----+----+----+
   */
   int matrizCompleta[2][3] = { {1, 2, 3}, {4, 5, 6} };
 
@@ -171,49 +171,50 @@ int main() {
 /* =============================================================
    || 3. Declaração de dimensão relativa à inicialização      ||
    ============================================================= */
-// Garante linearidade dos dados de forma física na memória
-// Acesso imediato aos dados sendo O(1)
+  // Garante linearidade dos dados de forma física na memória
+  // Acesso imediato aos dados sendo O(1)
 
-// 3.1 Matriz unidimensional, com itens na inicialização e declaração relativa:
-int MatrizItens[] = {1, 3, 6, 8};
-/* Aqui o tamanho da matriz é automaticamente escolhido ao ser compilado,
- * de acordo com o número de elementos inicializados.
- * Exemplo:
- *     +----+----+----+----+
- *     | 01 | 03 | 06 | 08 |
- *     +----+----+----+----+
- *  i  [00] [01] [02] [03]
- */
-int tamanhoMatrizItens = sizeof(MatrizItens)/sizeof(int);
-printf("Tamanho da Matriz de itens eh: %d >> [bytes: %d]\n", tamanhoMatrizItens, sizeof(MatrizItens));
+  // 3.1 Matriz unidimensional, com itens na inicialização e declaração relativa:
+    int MatrizItens[] = {1, 3, 6, 8};
+
+    /* Aqui o tamanho da matriz é automaticamente escolhido ao ser compilado,
+    * de acordo com o número de elementos inicializados.
+    * Exemplo:
+    *     +----+----+----+----+
+    *     | 01 | 03 | 06 | 08 |
+    *     +----+----+----+----+
+    *  i  [00] [01] [02] [03]
+    */
+    int tamanhoMatrizItens = sizeof(MatrizItens)/sizeof(int);
+    printf("Tamanho da Matriz de itens eh: %d >> [bytes: %d]\n", tamanhoMatrizItens, sizeof(MatrizItens));
 
 
-// 3.2 Matriz bidimensional, com tamanho de linha omitido na declaração:
-int matrizTamanhoOmitido[][3] = { {1, 2, 3}, {4, 5, 6} };
+  // 3.2 Matriz bidimensional, com tamanho de linha omitido na declaração:
+    int matrizTamanhoOmitido[][3] = { {1, 2, 3}, {4, 5, 6} };
 
-  /* Aqui o número de linhas é automaticamente determinado pelo compilador,
-   * de acordo com o número de subarrays inicializados.
-   * Neste exemplo, temos 2 linhas e 3 colunas.
-   */
+    /* Aqui o número de linhas é automaticamente determinado pelo compilador,
+    * de acordo com o número de subarrays inicializados.
+    * Neste exemplo, temos 2 linhas e 3 colunas.
+    */
 
-  /*
-         +----+----+----+
-     [0] |  1 |  2 |  3 |
-         +----+----+----+
-     [1] |  4 |  5 |  6 |
-         +----+----+----+
-  */
+    /*
+          +----+----+----+
+      [0] |  1 |  2 |  3 |
+          +----+----+----+
+      [1] |  4 |  5 |  6 |
+          +----+----+----+
+    */
 
-  /* 
-   * Calculando o número de linhas e o número total de elementos
-   * da matriz com tamanho de linha omitido na declaração.
-   *
-   * - O número de linhas é obtido dividindo o tamanho total da matriz
-   *   pelo tamanho de uma linha (subarray).
-   * 
-   * - O número total de elementos é obtido dividindo o tamanho total da matriz
-   *   pelo tamanho de um elemento (int).
-   */
+    /* 
+    * Calculando o número de linhas e o número total de elementos
+    * da matriz com tamanho de linha omitido na declaração.
+    *
+    * - O número de linhas é obtido dividindo o tamanho total da matriz
+    *   pelo tamanho de uma linha (subarray).
+    * 
+    * - O número total de elementos é obtido dividindo o tamanho total da matriz
+    *   pelo tamanho de um elemento (int).
+    */
 
     // sizeof(matrizTamanhoOmitido)/sizeof(matrizTamanhoOmitido[0]) >> É igual a 2 linhas.
     int linhasMatrizTamanhoOmitido = sizeof(matrizTamanhoOmitido)/sizeof(matrizTamanhoOmitido[0]);
@@ -228,7 +229,7 @@ int matrizTamanhoOmitido[][3] = { {1, 2, 3}, {4, 5, 6} };
 /* =============================================================
    || 4. Inicialização com Constantes e #define               ||
    ============================================================= */
-    // Utilizando constantes simbólicas para definir tamanhos de matrizes.
+  // Utilizando constantes simbólicas para definir tamanhos de matrizes.
 
     // 4.1 Inicialização zerada usando #define
     #define LINHAS 2
@@ -247,7 +248,7 @@ int matrizTamanhoOmitido[][3] = { {1, 2, 3}, {4, 5, 6} };
    || 5. Inicialização sem valores explícitos (Indefinidos)   ||
    ============================================================= */
   // Elementos não inicializados (valores indefinidos/lixo)
-  int matrizNaoInicializada[2][3];
+    int matrizNaoInicializada[2][3];
 
 
 /* =============================================================

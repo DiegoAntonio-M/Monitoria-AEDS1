@@ -8,6 +8,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 int main() {
 
@@ -183,7 +184,7 @@ int main() {
     *     +----+----+----+----+
     *     | 01 | 03 | 06 | 08 |
     *     +----+----+----+----+
-    *  i  [00] [01] [02] [03]
+    *   i  [00] [01] [02] [03]
     */
     int tamanhoMatrizItens = sizeof(MatrizItens)/sizeof(int);
     printf("Tamanho da Matriz de itens eh: %d >> [bytes: %d]\n", tamanhoMatrizItens, sizeof(MatrizItens));
@@ -241,7 +242,7 @@ int main() {
     const int LINHAS_CONST = 2;
     const int COLUNAS_CONST = 3;
 
-    int matrizConstante[LINHAS_CONST][COLUNAS_CONST] = {0};
+    int matrizConstante[LINHAS_CONST][COLUNAS_CONST] = {};
 
 
 /* =============================================================
@@ -252,10 +253,99 @@ int main() {
 
 
 /* =============================================================
-   || 6. Inicialização Dinâmica com malloc e calloc           ||
+   || 6. Inicialização de Strings e Conjunto de Strings       ||
+   ============================================================= */
+
+  // 6.1 Inicialização de strings (vetores de char):
+  // Strings em C são vetores de char terminados por '\0' (caractere nulo).
+  // Sempre garanta que a última posição do vetor seja nula ('\0'), pois várias funções usam esse parâmetro
+  // como término da string.
+
+    // 6.1.1 Inicialização explícita com caracteres individuais:
+      char saudacao1[6] = {'O', 'l', 'a', '!', '\n', '\0'};
+      /* Cada caractere é definido manualmente, incluindo o '\0' ao final para indicar o fim da string.
+      * Exemplo de uso:
+      * printf("%s", saudacao1); // Saída: Ola!
+      */
+
+    // 6.1.2 Inicialização com string literal (forma mais comum):
+      char saudacao2[] = "Ola!\n";
+      /* O compilador adiciona automaticamente o '\0' ao final da string.
+      * O tamanho do vetor é ajustado automaticamente para comportar todos os caracteres mais o '\0'.
+      * Exemplo de uso:
+      * printf("%s", saudacao2); // Saída: Ola!
+      */
+      // Exemplo de uso do sizeof para obter o tamanho de uma string (em bytes)
+      printf("Tamanho de saudacao2 (em bytes): %d\n", sizeof(saudacao2));
+      printf("Comprimento da string saudacao2 (sem contar o '\\0'): %d\n", strlen(saudacao2));
+
+    // 6.1.3 Inicialização de string com tamanho fixo (restante preenchido com '\0'):
+      char saudacao3[10] = "Oi";
+      /* Os caracteres após "Oi" são preenchidos com '\0', garantindo que toda a área do vetor esteja zerada.
+      * Exemplo de uso:
+      * printf("%s", saudacao3); // Saída: Oi
+      */
+
+    // 6.1.4 String vazia (todos os caracteres são '\0'):
+      char stringVazia[20] = {0};
+      /* Útil para garantir que a string esteja limpa antes de uso.
+      * Exemplo de uso:
+      * printf("Tamanho de stringVazia: %zu\n", sizeof(stringVazia));
+      */
+
+
+  // 6.2 Inicialização de conjunto de strings (matriz de char ou array de ponteiros):
+
+    // 6.2.1 Usando matriz de char (tamanho fixo para cada string):
+      char opcoes[][30] = {
+          "1 - Inserir novo registro",
+          "2 - Remover registro",
+          "3 - Listar registros",
+          "4 - Buscar registro",
+          "5 - Sair"
+      };
+      /* Cada linha do array 'opcoes' é uma string de até 29 caracteres (mais o '\0').
+      * O compilador determina automaticamente o número de linhas com base na quantidade de itens inicializados.
+      * Exemplo de uso:
+      * printf("Primeira opção: %s\n", opcoes[0]); // Saída: 1 - Inserir novo registro
+      * printf("Última opção: %s\n", opcoes[4]);   // Saída: 5 - Sair
+      */
+
+      // Exemplo de exibição do menu completo:
+      printf("===== MENU =====\n");
+      int totalOpcoes = sizeof(opcoes) / sizeof(opcoes[0]);
+      for (int i = 0; i < totalOpcoes; i++) {
+          printf("%s\n", opcoes[i]);
+      }
+
+    // 6.2.2 Usando array de ponteiros para char (tamanho variável para cada string):
+      const char *palavras[] = {
+          "cachorro",
+          "gato",
+          "pássaro",
+          "peixe",
+          "hamster"
+          // Pode adicionar mais palavras sem precisar alterar o tamanho do array
+      };
+      /* O compilador conta automaticamente quantos elementos existem na lista de inicialização e reserva espaço para essa quantidade de ponteiros.
+      * Exemplo de uso:
+      * printf("Primeira palavra: %s\n", palavras[0]);
+      * printf("Última palavra: %s\n", palavras[4]);
+      */
+
+      // Percorrendo todas as palavras do conjunto:
+      printf("Lista de palavras:\n");
+      int totalPalavras = sizeof(palavras) / sizeof(palavras[0]);
+      for (int i = 0; i < totalPalavras; i++) {
+          printf("- %s\n", palavras[i]);
+      }
+
+
+/* =============================================================
+   || 7. Inicialização Dinâmica com malloc e calloc           ||
    ============================================================= */
   /*
-    * 6.1 Linearidade garantida (bloco único):
+    * 7.1 Linearidade garantida (bloco único):
     *    Aloca todos os elementos em um único bloco de memória, garantindo linearidade.
     *    O acesso é feito por aritmética de índices.
   */
@@ -292,13 +382,13 @@ int main() {
 
   /*==========================================================================================*/
     /*
-    * 6.2 Ponteiro de ponteiro (não garante linearidade): <<<<< [ATENÇÃO]
+    * 7.2 Ponteiro de ponteiro (não garante linearidade): <<<<< [ATENÇÃO]
     *    Cada linha é alocada separadamente, podendo ficar em locais diferentes na memória.
     */
 
     int **matrizPonteiro = (int**)malloc(linhas * sizeof(int*)); // Também pode ser feito com calloc
     for (int i = 0; i < linhas; i++)
-        matrizPonteiro[i] = (int**)malloc(colunas * sizeof(int)); // Também pode ser feito com calloc
+        matrizPonteiro[i] = (int*)malloc(colunas * sizeof(int)); // Também pode ser feito com calloc
 
     // Uso: matrizPonteiro[i][j]
 
@@ -331,11 +421,11 @@ int main() {
     free(matrizPonteiro); //Limpa o local que está armazenado o conjunto de linhas
   /*------------------------------------------------------------------------------------------------------*/
 
-/* =============================================================
-   || 7. Inicialização de Matrizes Multidimensionais Dinâmicas ||
-   ============================================================= */
+/* ==============================================================
+   || 8. Inicialização de Matrizes Multidimensionais Dinâmicas ||
+   ============================================================== */
   /*
-   * 7.1 Exemplo de matriz tridimensional dinâmica (ponteiros de ponteiros de ponteiros)
+   * 8.1 Exemplo de matriz tridimensional dinâmica (ponteiros de ponteiros de ponteiros)
    * Também nesse formato cada alocação de memória não é garantido o alinhamento físico a memória,
    * apenas o conjunto de cada reserva de endereços (cada conjunto endereçado pelo malloc ou calloc é garantido)
   */
@@ -358,10 +448,10 @@ int main() {
     free(matriz3D);
 
 /* =============================================================
-   || 8. Inicialização com Variáveis (VLA - C99+)             ||
+   || 9. Inicialização com Variáveis (VLA - C99+)             ||
    ============================================================= */
   /*
-   * 8.1 A partir do C99, é possível declarar matrizes com tamanhos definidos por variáveis.
+   * 9.1 A partir do C99, é possível declarar matrizes com tamanhos definidos por variáveis.
    * Exemplo:
   */
     int linha = 3, coluna = 4;

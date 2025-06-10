@@ -19,46 +19,63 @@
 #include <stdlib.h>
 #include <time.h>
 
-#define QUANT 30
+#define QUANT 200000 // Agora igual ao valor de QUANT do outro arquivo
 
 int main() {
+    clock_t inicio, fim;
+    double tempo_gasto;
+    inicio = clock(); // Inicia a contagem do tempo
+
     int vetor[QUANT][2] = {};
     int quantDistinto = QUANT;
     int contarMaisRepetido = 0;
     int contarMenosRepetido = 0;
 
-    srand(time(NULL)); // <<<--- Usando a Lib de randomizar para não ter que colocar cada número de forma manual
+    srand(time(NULL));
 
     for (int i = 0; i < QUANT; i++) {
 
         // printf("[%d] Digite o valor: ", i + 1);  // <| Original para pegar os Números do usuário
         // scanf("%d", &vetor[i][0]);               // <|
-
-        vetor[i][0] = rand() % 15 + 1; //<--- Randomizando para não ter que colocar cada número de forma manual
+        vetor[i][0] = rand() % 500 + 1; //<--- Randomizando para não ter que colocar cada número de forma manual
         vetor[i][1] = 1;
     }
 
-    for (int i = 0; i < quantDistinto; i++) {
-        int aux[2] = {};
-        for (int j = i + 1; j < QUANT; j++) {
-            if (vetor[i][1] == 0 || (vetor[j][1] != 0 && vetor[i][0] > vetor[j][0])) {
-                aux[0] = vetor[i][0];
-                aux[1] = vetor[i][1];
+    // Usa um hash temporário para contar frequências rapidamente
+    // Limita os valores possíveis a 1..500 (como no rand() % 500 + 1)
+    int freq[501] = {0};
+    for (int i = 0; i < QUANT; i++) {
+        freq[vetor[i][0]]++;
+    }
 
+    // Preenche vetor[] apenas com valores distintos e suas frequências
+    quantDistinto = 0;
+    for (int v = 1; v <= 500; v++) {
+        if (freq[v] > 0) {
+            vetor[quantDistinto][0] = v;
+            vetor[quantDistinto][1] = freq[v];
+            quantDistinto++;
+        }
+    }
+
+    // Ordena vetor[] por valor (já está em ordem, mas se quiser garantir)
+    // (pode remover este bubble sort se não precisar)
+    /*
+    for (int i = 0; i < quantDistinto - 1; i++) {
+        for (int j = i + 1; j < quantDistinto; j++) {
+            if (vetor[i][0] > vetor[j][0]) {
+                int tmp0 = vetor[i][0], tmp1 = vetor[i][1];
                 vetor[i][0] = vetor[j][0];
                 vetor[i][1] = vetor[j][1];
-
-                vetor[j][0] = aux[0];
-                vetor[j][1] = aux[1];
-
-            } else if ((vetor[i][1] != 0 && vetor[j][1] != 0) && vetor[i][0] == vetor[j][0]) {
-                vetor[i][1] += vetor[j][1];
-                vetor[j][1] = 0;
-                quantDistinto--;
+                vetor[j][0] = tmp0;
+                vetor[j][1] = tmp1;
             }
         }
+    }
+    */
 
-        // Atualiza o maisRepetido e menosRepetido usando vetor[i][1]
+    // Atualiza o maisRepetido e menosRepetido usando vetor[i][1]
+    for (int i = 0; i < quantDistinto; i++) {
         if (vetor[i][1] != 0) {
             if (vetor[i][1] > contarMaisRepetido) {
                 contarMaisRepetido = vetor[i][1];
@@ -95,6 +112,10 @@ int main() {
         if (vetor[i][1] == contarMenosRepetido) printf(" %03d |", vetor[i][0]);
     }
     printf("\n");
+
+    fim = clock(); // Finaliza a contagem do tempo
+    tempo_gasto = ((double)(fim - inicio)) / CLOCKS_PER_SEC;
+    printf("\nTempo de execucao: %.6f segundos\n", tempo_gasto);
 
     return 0;
 }

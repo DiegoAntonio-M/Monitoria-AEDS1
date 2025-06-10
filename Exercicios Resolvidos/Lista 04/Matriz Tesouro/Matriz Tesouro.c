@@ -81,7 +81,6 @@ int main() {
         case 0:
                 printf(">>>> Nada aqui!\n");
                 tabuleiro[coodLinha][coodColuna] = -1;
-                tesourosEncontrados++;
             break;
         case 1:
                 printf(">>>> Tesouro encontado !\n");
